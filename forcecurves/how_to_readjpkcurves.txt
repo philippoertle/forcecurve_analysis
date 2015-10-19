@@ -1,0 +1,24 @@
+JPK (out-file) Structure:
+
+HEADER FWD (forward) curve
+runs from '#index: ("\d")\r\n' to '#\r\n'
+CONTENT FWD curve
+runs from '#\r\n' to '\r\n'
+HEADER BWD (backward) curve
+runs from '#index: ("\d")\r\n' to '#\r\n'
+CONTENT BWD curve
+runs from '#\r\n' to '\r\n'
+
+from HEADER read (equal for BWD and FWD)
+	# sensitivity: ("\d")\r\n
+	# springConstant: ("\d")\r\n
+from CONTENT read columns 1,2,3,4
+
+multiply column 1 with 'sensitivity' and 'springConstant'
+plot the following:
+	Vertical Deflection:
+		column 1 vs 2 (against sensor)
+		column 1 vs 3 (against ramp)
+	Horizontal Deflection:
+		column 4 vs 2 (against sensor)
+		column 4 vs 3 (against ramp)
